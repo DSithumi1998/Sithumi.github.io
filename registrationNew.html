@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Sign in</title>
+	<link rel="stylesheet" type="text/css" href="css/Signinstyle.css">
+    <link rel="stylesheet" href="Style1.css" />
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="HomePageStyles.css" />
+    
+
+
+<script type="text/javascript">
+
+//validations for customer registration
+
+function validateFullName()
+{
+	var fname=document.getElementById("user").value;
+	if(fname=="" || fname==null)
+	{
+		alert("Please enter your Full Name");
+		return false;
+	}
+	return true;
+}
+
+function validateAddress()
+{
+	var address=document.getElementById("address").value;
+	if(address=="" || address==null)
+	{
+		alert("Please enter your Address");
+		return false;
+	}
+	return true;
+}
+
+function validateContactNumber()
+{
+	var tele=document.getElementById("cno").value;
+	
+	if(isNaN(tele) || (tele.length !=10))
+	{
+		alert("Please enter a valid Contact Number");
+		return false;
+	}
+	return true;
+}
+
+function validateEmail()
+{
+	var email=document.getElementById("email").value;
+	var at=email.indexOf("@");
+	var dt=email.lastIndexOf(".");
+	var len=email.length;
+	
+	if((at<2) || (dt-at<2) || (len-dt<2))
+	{
+		alert("Please enter a valid email address");
+		return false;
+	}
+	return true;
+}
+
+function validatePassword()
+{
+	var pwd=document.getElementById("password").value;
+	var cpwd=document.getElementById("cpassword").value;
+	
+	if(pwd.length>8 || pwd!=cpwd || pwd=="" || pwd==null || cpwd=="" || cpwd==null)
+	{
+		alert("Please enter a correct password and enter the same to Confirm Password");
+		return false;
+	}
+	return true;
+}
+
+function validation()
+{
+	if(validateFullName() && validateAddress() && validateContactNumber() && validateEmail() && validatePassword())
+	{
+		alert("Your account has been created");
+	}
+	else
+	{
+		event.preventDefault();
+	}
+}
+
+</script>
+
+	
+</head>
+
+<body>
+
+<a href="HomePage.html"><img src="NewBack.jpg" width="30" height="30" /></a>
+
+	<header>
+    	<div class="main">
+        	<div class="logo">
+            <img src="logo3.png"/>
+        	<ul>
+           	  	<li><a href="HomePage.html">Home</a></li>
+                <li><a href="loginNew.html">LogIn</a></li>
+                <li  class="active"><a href="registrationNew.html">SignUp</a></li>
+                <li><a href="AboutUs.html">About</a></li>
+                <li><a href="ContactUs.html">Contact</a></li>
+                <li><a href="index.php">Find Us</a></li>
+            </ul>
+        </div>
+        </div>
+        </header>
+	
+	<div class="login-box">
+		<h1>Create an Account</h1>
+		
+	<form name="form1" action="regVal.php" method="post" >
+		<p>Full Name</p>
+		<input type="text" placeholder="full name" name="user" id="user" required>
+
+		<p>Address</p>
+		<input type="text" placeholder="address" name="address" id="address" required>
+        
+		<p>Contact Number</p>
+		<input type="text" placeholder="contact number" name="cno" id="cno" maxlength="10" required>
+        
+		<p>Email</p>
+		<input type="text" placeholder="email" name="email" id="email" required>
+		
+		<p>Password</p>
+		<input type="password" placeholder="password" name="password" id="password" required>
+        
+		<p>Confirm Password</p>
+		<input type="password" placeholder="confirm password" name="cpassword" id="cpassword" required>
+		
+		<input type="submit" name="btnRegister" id="btnRegister" value="Create Acount" class="signinbtn" onClick="validation()" /> 
+		
+		
+		<br>
+		<a href="loginNew.php" target="_top">Log In to my account</a>
+
+	
+		</form>
+        </div>
+</body>
+
+
+
+
+</html>
